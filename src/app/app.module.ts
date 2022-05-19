@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'; 
 
 @NgModule({
   declarations: [
@@ -14,7 +16,11 @@ import { PerfilComponent } from './perfil/perfil.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  registrationStrategy: 'registerImmediately',
+}) 
 
   ],
   providers: [],
